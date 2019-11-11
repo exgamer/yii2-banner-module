@@ -14,7 +14,7 @@
 Подключение модуля для админки
 
      'modules' => [
-         'static' => [
+         'banner' => [
              'class' => 'concepture\yii2banner\Module'
          ],
      ],
