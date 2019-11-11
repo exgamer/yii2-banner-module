@@ -41,24 +41,27 @@ use yii\widgets\Pjax;
             'prompt' => Yii::t('banner', 'Выберите домен')
         ]
     );?>
-    <div class="form-group">
-        <?= $form->field($model, 'from_at')->widget(\yii\jui\DatePicker::className(),
-            [
-                'dateFormat' => 'php:Y-m-d',
-                'clientOptions' =>[
-                    'changeMonth'=> true,
-                    'changeYear'=> true,
-                ]
-            ]) ?>
-
-        <?= $form->field($model, 'to_at')->widget(\yii\jui\DatePicker::className(),
-            [
-                'dateFormat' => 'php:Y-m-d',
-                'clientOptions' =>[
-                    'changeMonth'=> true,
-                    'changeYear'=> true,
-                ]
-            ]) ?>
+    <div class="row">
+        <div class="col-md-6">
+            <?= $form->field($model, 'from_at')->widget(\yii\jui\DatePicker::className(),
+                [
+                    'dateFormat' => 'php:Y-m-d',
+                    'clientOptions' =>[
+                        'changeMonth'=> true,
+                        'changeYear'=> true,
+                    ]
+                ]) ?>
+        </div>
+        <div class="col-md-6">
+            <?= $form->field($model, 'to_at')->widget(\yii\jui\DatePicker::className(),
+                [
+                    'dateFormat' => 'php:Y-m-d',
+                    'clientOptions' =>[
+                        'changeMonth'=> true,
+                        'changeYear'=> true,
+                    ]
+                ]) ?>
+        </div>
     </div>
     <div class="form-group">
         <?= Html::submitButton(Yii::t('banner', 'Сохранить'), ['class' => 'btn btn-success']) ?>
