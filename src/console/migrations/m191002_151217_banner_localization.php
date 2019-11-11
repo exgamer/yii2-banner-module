@@ -29,6 +29,5 @@ class m191002_151217_banner_localization extends Migration
         $this->addIndex(['entity_id']);
         $this->addIndex(['entity_id', 'locale'], true);
         $this->addIndex(['locale']);
-        $this->addIndex(['url']);
     }
 }
