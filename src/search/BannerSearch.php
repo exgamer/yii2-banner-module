@@ -50,15 +50,14 @@ class BannerSearch extends Banner
         $query->andFilterWhere([
             'domain_id' => $this->domain_id
         ]);
+        $query->andFilterWhere(['like', "seo_name", $this->seo_name]);
         static::$search_by_locale_callable = function($q, $localizedAlias){
-            $q->andFilterWhere(['like', "{$localizedAlias}.seo_name", $this->seo_name]);
             $q->andFilterWhere(['like', "{$localizedAlias}.title", $this->title]);
         };
     }
 
     protected function extendDataProvider(ActiveDataProvider $dataProvider)
     {
-        $this->addSortByLocalizationAttribute($dataProvider, 'seo_name');
         $this->addSortByLocalizationAttribute($dataProvider, 'title');
     }
 }
