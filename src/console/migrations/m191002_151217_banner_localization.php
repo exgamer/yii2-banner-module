@@ -18,7 +18,6 @@ class m191002_151217_banner_localization extends Migration
             'id' => $this->primaryKey(),
             'entity_id' => $this->integer()->notNull(),
             'locale' => $this->integer()->notNull(),
-            'seo_name' => $this->string(1024),
             'image' => $this->string(1024),
             'title' => $this->string(1024),
             'content' => $this->text(),

@@ -42,7 +42,6 @@ class Banner extends ActiveRecord
     public $locale;
     public $title;
     public $content;
-    public $seo_name;
     public $image;
     public $sort;
     public $from_at;
@@ -100,7 +99,7 @@ class Banner extends ActiveRecord
                 [
                     'seo_name',
                 ],
-                UniquePropertyValidator::class
+                'unique'
             ],
             [
                 [

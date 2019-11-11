@@ -15,7 +15,6 @@ use concepture\yii2logic\validators\TranslitValidator;
  * @property string $title
  * @property string $content
  * @property string $image
- * @property string $seo_name
  * @property integer $status
  * @property datetime $from_at
  * @property datetime $to_at
@@ -62,7 +61,6 @@ class BannerLocalization extends ActiveRecord
             [
                 [
                     'title',
-                    'seo_name',
                     'image',
                 ],
                 'string',
@@ -95,7 +93,6 @@ class BannerLocalization extends ActiveRecord
             'locale' => Yii::t('banner','Язык'),
             'title' => Yii::t('banner','Название'),
             'content' => Yii::t('banner','Контент'),
-            'seo_name' => Yii::t('banner','SEO название'),
             'sort' => Yii::t('banner','Сортировка'),
             'image' => Yii::t('banner','Изображение'),
             'from_at' => Yii::t('banner','Дата с'),
