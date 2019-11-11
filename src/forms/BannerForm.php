@@ -36,6 +36,7 @@ class BannerForm extends Form
                     'title',
                     'content',
                     'locale',
+                    'image',
                 ],
                 'required'
             ],
