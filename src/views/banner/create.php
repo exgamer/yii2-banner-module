@@ -2,8 +2,8 @@
 
 use yii\helpers\Html;
 
-$this->title = Yii::t('backend', 'Добавить');
-$this->params['breadcrumbs'][] = ['label' => Yii::t('static', 'Баннеры'), 'url' => ['index']];
+$this->title = Yii::t('banner', 'Добавить');
+$this->params['breadcrumbs'][] = ['label' => Yii::t('banner', 'Баннеры'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="post-category-create">

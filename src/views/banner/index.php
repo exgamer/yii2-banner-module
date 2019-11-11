@@ -6,7 +6,7 @@ use yii\grid\GridView;
 use yii\widgets\Pjax;
 
 
-$this->title = Yii::t('backend', 'Баннеры');
+$this->title = Yii::t('banner', 'Баннеры');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="post-category-index">
@@ -14,12 +14,12 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a(Yii::t('static', 'Добавить'), ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a(Yii::t('banner', 'Добавить'), ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php Pjax::begin(); ?>
     <div class="form-group">
-        <?= Html::label(Yii::t('static', 'Версии'))?>
+        <?= Html::label(Yii::t('banner', 'Версии'))?>
         <?php foreach (Yii::$app->localeService->catalog() as $key => $locale):?>
             <?= Html::a(
                 $locale,
@@ -95,9 +95,9 @@ $this->params['breadcrumbs'][] = $this->title;
                             '<span class="glyphicon glyphicon-ok"></span>',
                             ['status-change', 'id' => $model['id'], 'status' => StatusEnum::ACTIVE],
                             [
-                                'title' => Yii::t('static', 'Активировать'),
+                                'title' => Yii::t('banner', 'Активировать'),
                                 'data-pjax' => '0',
-                                'data-confirm' => Yii::t('static', 'Активировать ?'),
+                                'data-confirm' => Yii::t('banner', 'Активировать ?'),
                                 'data-method' => 'post',
                             ]
                         );
@@ -110,9 +110,9 @@ $this->params['breadcrumbs'][] = $this->title;
                             '<span class="glyphicon glyphicon-remove"></span>',
                             ['status-change', 'id' => $model['id'], 'status' => StatusEnum::INACTIVE],
                             [
-                                'title' => Yii::t('static', 'Деактивировать'),
+                                'title' => Yii::t('banner', 'Деактивировать'),
                                 'data-pjax' => '0',
-                                'data-confirm' => Yii::t('static', 'Деактивировать ?'),
+                                'data-confirm' => Yii::t('banner', 'Деактивировать ?'),
                                 'data-method' => 'post',
                             ]
                         );

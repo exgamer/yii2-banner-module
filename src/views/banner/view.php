@@ -5,7 +5,7 @@ use yii\widgets\DetailView;
 
 
 $this->title = $model->title;
-$this->params['breadcrumbs'][] = ['label' => Yii::t('static', 'Баннеры'), 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('banner', 'Баннеры'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
@@ -14,18 +14,18 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a(Yii::t('backend', Yii::t('static', 'Редактировать')), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a(Yii::t('backend', Yii::t('static', 'Удалить')), ['delete', 'id' => $model->id], [
+        <?= Html::a(Yii::t('banner', Yii::t('banner', 'Редактировать')), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a(Yii::t('banner', Yii::t('banner', 'Удалить')), ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
-                'confirm' => Yii::t('backend', 'Are you sure you want to delete this item?'),
+                'confirm' => Yii::t('banner', 'Are you sure you want to delete this item?'),
                 'method' => 'post',
             ],
         ]) ?>
     </p>
 
     <div class="form-group">
-        <?= Html::label(Yii::t('static', 'Версии'))?>
+        <?= Html::label(Yii::t('banner', 'Версии'))?>
         <?php foreach ($model->locales() as $key => $locale):?>
             <?= Html::a(
                 $locale,

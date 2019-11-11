@@ -22,7 +22,7 @@
 Для переопределния контроллера добавялем в настройки модуля
 
      'modules' => [
-         'static' => [
+         'banner' => [
             'class' => 'concepture\yii2banner\Module',
             'controllerMap' => [
                 'banner' => 'backend\controllers\BannerController'
@@ -34,7 +34,7 @@
 Для переопределния папки с представленяими добавялем в настройки модуля
 
      'modules' => [
-         'static' => [
+         'banner' => [
              'class' => 'concepture\yii2banner\Module',
              'viewPath' => '@backend/views'
          ],

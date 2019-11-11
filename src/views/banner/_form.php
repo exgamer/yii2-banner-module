@@ -9,7 +9,7 @@ use yii\widgets\Pjax;
 <div class="post-category-form">
     <?php Pjax::begin(); ?>
     <div class="form-group">
-        <?= Html::label(Yii::t('static', 'Версии'))?>
+        <?= Html::label(Yii::t('banner', 'Версии'))?>
         <?php foreach (Yii::$app->localeService->catalog() as $key => $locale):?>
             <?= Html::a(
                 $locale,
@@ -38,12 +38,12 @@ use yii\widgets\Pjax;
     <?= $form->field($model, 'domain_id')->dropDownList(
         Yii::$app->domainService->catalog(),
         [
-            'prompt' => Yii::t('backend', 'Выберите домен')
+            'prompt' => Yii::t('banner', 'Выберите домен')
         ]
     );?>
 
     <div class="form-group">
-        <?= Html::submitButton(Yii::t('static', 'Сохранить'), ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton(Yii::t('banner', 'Сохранить'), ['class' => 'btn btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

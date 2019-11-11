@@ -2,12 +2,12 @@
 
 use yii\helpers\Html;
 
-$this->title = Yii::t('backend', 'Редактировать баннер: {name}', [
+$this->title = Yii::t('banner', 'Редактировать баннер: {name}', [
     'name' => $model->seo_name,
 ]);
-$this->params['breadcrumbs'][] = ['label' => Yii::t('static', 'Баннеры'), 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('banner', 'Баннеры'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->title, 'url' => ['view', 'id' => $originModel->id]];
-$this->params['breadcrumbs'][] = Yii::t('static', 'Редактировать');
+$this->params['breadcrumbs'][] = Yii::t('banner', 'Редактировать');
 ?>
 <div class="post-category-update">
 
