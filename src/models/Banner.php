@@ -24,7 +24,6 @@ use concepture\yii2user\models\traits\UserTrait;
  * @property string $seo_name
  * @property string $image
  * @property integer $status
- * @property integer $sort
  * @property datetime $from_at
  * @property datetime $to_at
  * @property datetime $created_at
@@ -43,7 +42,6 @@ class Banner extends ActiveRecord
     public $title;
     public $content;
     public $image;
-    public $sort;
     public $from_at;
     public $to_at;
 
@@ -68,8 +66,7 @@ class Banner extends ActiveRecord
                     'status',
                     'user_id',
                     'domain_id',
-                    'locale',
-                    'sort'
+                    'locale'
                 ],
                 'integer'
             ],

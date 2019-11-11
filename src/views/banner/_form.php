@@ -34,7 +34,6 @@ use yii\widgets\Pjax;
         ],
     ]); ?>
     <?= $form->field($model, 'seo_name')->textInput(['maxlength' => true]) ?>
-    <?= $form->field($model, 'sort')->textInput() ?>
 
     <?= $form->field($model, 'domain_id')->dropDownList(
         Yii::$app->domainService->catalog(),

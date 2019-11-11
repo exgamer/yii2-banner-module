@@ -57,7 +57,6 @@ $this->params['breadcrumbs'][] = $this->title;
                 'value'=>$model->getDomainName(),
             ],
             'image',
-            'sort',
             'from_at',
             'to_at',
             'created_at',

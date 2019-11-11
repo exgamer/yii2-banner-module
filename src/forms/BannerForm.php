@@ -20,7 +20,6 @@ class BannerForm extends Form
     public $content;
     public $seo_name;
     public $image;
-    public $sort;
     public $from_at;
     public $to_at;
     public $status = StatusEnum::INACTIVE;
@@ -34,7 +33,6 @@ class BannerForm extends Form
             [
                 [
                     'title',
-                    'content',
                     'locale',
                     'image',
                 ],

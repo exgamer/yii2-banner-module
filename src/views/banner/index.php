@@ -42,7 +42,6 @@ $this->params['breadcrumbs'][] = $this->title;
 //            ],
             'seo_name',
             'image',
-            'sort',
             'from_at',
             'to_at',
 //            [

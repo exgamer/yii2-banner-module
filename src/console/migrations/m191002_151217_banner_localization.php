@@ -21,7 +21,6 @@ class m191002_151217_banner_localization extends Migration
             'image' => $this->string(1024),
             'title' => $this->string(1024),
             'content' => $this->text(),
-            'sort' => $this->integer()->defaultValue(0),
             'from_at' => $this->date(),
             'to_at' => $this->date(),
         ]);

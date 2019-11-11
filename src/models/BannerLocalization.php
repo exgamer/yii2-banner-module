@@ -41,8 +41,7 @@ class BannerLocalization extends ActiveRecord
         return [
             [
                 [
-                    'entity_id',
-                    'sort',
+                    'entity_id'
                 ],
                 'integer'
             ],
