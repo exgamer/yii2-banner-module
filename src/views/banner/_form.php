@@ -23,6 +23,7 @@ use yii\widgets\Pjax;
 
     <?php $form = ActiveForm::begin() ?>
     <?= $form->errorSummary($model) ?>
+    <?= $form->field($model, 'image')->textInput(['maxlength' => true]) ?>
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'content')->widget(CKEditor::className(),[
