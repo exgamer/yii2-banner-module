@@ -19,7 +19,7 @@
     ],
     "autoload": {
         "psr-4": {
-            "concepture\\yii2static\\": "src"
+            "concepture\\yii2banner\\": "src"
         }
     },
     "extra": {
