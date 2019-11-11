@@ -23,8 +23,8 @@ class m191002_151217_banner_localization extends Migration
             'title' => $this->string(1024),
             'content' => $this->text(),
             'sort' => $this->integer()->defaultValue(0),
-            'from_at' => $this->dateTime(),
-            'to_at' => $this->dateTime(),
+            'from_at' => $this->date(),
+            'to_at' => $this->date(),
         ]);
         $this->addIndex(['entity_id']);
         $this->addIndex(['entity_id', 'locale'], true);

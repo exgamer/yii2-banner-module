@@ -107,8 +107,8 @@ class Banner extends ActiveRecord
                     'from_at',
                     'to_at'
                 ],
-                'datetime',
-                'format' => 'php:Y-m-d H:i:s'
+                'date',
+                'format' => 'php:Y-m-d'
             ],
             [
                 [
@@ -118,6 +118,7 @@ class Banner extends ActiveRecord
                 'default',
                 'value' => null
             ],
+            ['from_at', 'compare', 'compareAttribute' => 'to_at', 'operator' => '<=', 'enableClientValidation' => false]
         ];
     }
 
@@ -150,16 +151,16 @@ class Banner extends ActiveRecord
 
     public function afterDelete()
     {
-       $this->deleteLocalizations();
+        $this->deleteLocalizations();
 
-       return parent::afterDelete();
+        return parent::afterDelete();
     }
 
     public function afterFind()
     {
         $this->setLocalizations();
 
-       return parent::afterFind();
+        return parent::afterFind();
     }
 
     public static function getLocaleConverterClass()
