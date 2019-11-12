@@ -2,7 +2,7 @@
 
 namespace concepture\yii2banner\search;
 
-use concepture\yii2static\models\BannerUrlLink;
+use concepture\yii2banner\models\BannerUrlLink;
 use yii\db\ActiveQuery;
 use Yii;
 use yii\data\ActiveDataProvider;

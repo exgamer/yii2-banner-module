@@ -1,5 +1,5 @@
 <?php
-namespace concepture\yii2static\models;
+namespace concepture\yii2banner\models;
 
 use concepture\yii2handbook\converters\LocaleConverter;
 use concepture\yii2user\models\User;
