@@ -8,6 +8,7 @@ use yii\widgets\ActiveForm;
     <?php $form = ActiveForm::begin() ?>
     <?= $form->errorSummary($model) ?>
     <? echo $form->field($model, 'banner_id')->hiddenInput()->label(false); ?>
+    <div class="form-group">
     <?= Html::activeLabel($model, 'banner_id')?>
     <?= \yii\jui\AutoComplete::widget([
         'name' => 'name',
@@ -21,6 +22,7 @@ use yii\widgets\ActiveForm;
              }")]
     ]); ?>
     <?= Html::error($model, 'user_id')?>
+    </div>
     <?= $form->field($model, 'url')->textInput(['maxlength' => true]) ?>
     <?= $form->field($model, 'sort')->textInput(['maxlength' => true]) ?>
 
