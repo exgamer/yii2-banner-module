@@ -6,7 +6,7 @@ use concepture\yii2user\models\User;
 use Yii;
 use concepture\yii2logic\models\ActiveRecord;
 use concepture\yii2logic\validators\MD5Validator;
-use concepture\yii2user\models\traits\BannerTrait;
+use concepture\yii2banner\models\traits\BannerTrait;
 
 /**
  * BannerUrlLink model

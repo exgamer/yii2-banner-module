@@ -1,5 +1,5 @@
 <?php
-namespace concepture\yii2user\models\traits;
+namespace concepture\yii2banner\models\traits;
 
 use concepture\yii2banner\models\Banner;
 
