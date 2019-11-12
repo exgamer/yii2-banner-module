@@ -25,11 +25,6 @@ class BannerUrlLink extends ActiveRecord
 {
     use BannerTrait;
 
-    public $banner_id;
-    public $url;
-    public $url_md5_hash;
-    public $sort;
-
     /**
      * {@inheritdoc}
      */
