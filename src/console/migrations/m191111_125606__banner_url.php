@@ -25,8 +25,8 @@ class m191111_125606__banner_url extends Migration
         ]);
         $this->addIndex(['banner_id']);
         $this->addIndex(['url']);
-        $this->execute("ALTER TABLE banner_url
-            ADD INDEX bu_url_md5_hash_index
+        $this->execute("ALTER TABLE banner_url_link
+            ADD INDEX bul_url_md5_hash_index
             USING HASH (url_md5_hash);");
     }
 
