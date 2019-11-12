@@ -60,4 +60,14 @@ class BannerSearch extends Banner
     {
         $this->addSortByLocalizationAttribute($dataProvider, 'title');
     }
+
+    public static function getListSearchKeyAttribute()
+    {
+        return 'id';
+    }
+
+    public static function getListSearchAttribute()
+    {
+        return 'title';
+    }
 }

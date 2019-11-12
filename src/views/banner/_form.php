@@ -25,7 +25,6 @@ use yii\widgets\Pjax;
     <?= $form->errorSummary($model) ?>
     <?= $form->field($model, 'image')->textInput(['maxlength' => true]) ?>
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
-
     <?= $form->field($model, 'content')->widget(CKEditor::className(),[
         'editorOptions' => [
             'preset' => 'full', //разработанны стандартные настройки basic, standard, full данную возможность не обязательно использовать
@@ -34,13 +33,6 @@ use yii\widgets\Pjax;
         ],
     ]); ?>
     <?= $form->field($model, 'seo_name')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'domain_id')->dropDownList(
-        Yii::$app->domainService->catalog(),
-        [
-            'prompt' => Yii::t('banner', 'Выберите домен')
-        ]
-    );?>
     <div class="row">
         <div class="col-md-6">
             <?= $form->field($model, 'from_at')->widget(\yii\jui\DatePicker::className(),
@@ -63,6 +55,12 @@ use yii\widgets\Pjax;
                 ]) ?>
         </div>
     </div>
+    <?= $form->field($model, 'domain_id')->dropDownList(
+        Yii::$app->domainService->catalog(),
+        [
+            'prompt' => Yii::t('banner', 'Выберите домен')
+        ]
+    );?>
     <div class="form-group">
         <?= Html::submitButton(Yii::t('banner', 'Сохранить'), ['class' => 'btn btn-success']) ?>
     </div>

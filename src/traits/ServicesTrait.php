@@ -2,6 +2,7 @@
 namespace concepture\yii2banner\traits;
 
 use concepture\yii2banner\services\BannerService;
+use concepture\yii2banner\services\BannerUrlLinkService;
 use Yii;
 
 /**
@@ -17,6 +18,14 @@ trait ServicesTrait
     public function bannerService()
     {
         return Yii::$app->bannerService;
+    }
+
+    /**
+     * @return BannerUrlLinkService
+     */
+    public function bannerUrlLinkService()
+    {
+        return Yii::$app->bannerUrlLinkService;
     }
 }
 

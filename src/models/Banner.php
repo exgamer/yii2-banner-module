@@ -10,7 +10,7 @@ use concepture\yii2logic\models\traits\HasLocalizationTrait;
 use concepture\yii2logic\models\traits\StatusTrait;
 use concepture\yii2handbook\converters\LocaleConverter;
 use concepture\yii2handbook\models\traits\DomainTrait;
-use concepture\yii2user\models\traits\UserTrait;
+use concepture\yii2user\models\traits\BannerTrait;
 
 /**
  * Banner model
@@ -36,7 +36,7 @@ class Banner extends ActiveRecord
     use HasLocalizationTrait;
     use StatusTrait;
     use DomainTrait;
-    use UserTrait;
+    use BannerTrait;
 
     public $locale;
     public $title;
