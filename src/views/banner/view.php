@@ -51,6 +51,12 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             'seo_name',
             [
+                'attribute'=>'type',
+                'value'=>function($data) {
+                    return $data->getBannerTypeLabel();
+                }
+            ],
+            [
                 'attribute'=>'status',
                 'value'=>$model->statusLabel(),
             ],

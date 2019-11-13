@@ -184,7 +184,7 @@ class Banner extends ActiveRecord
 
     /**
      * Возвращает метку для типа баннера
-     * 
+     *
      * @return string
      */
     public function getBannerTypeLabel()

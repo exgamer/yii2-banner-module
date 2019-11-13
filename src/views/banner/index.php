@@ -51,6 +51,13 @@ $this->params['breadcrumbs'][] = $this->title;
 //                },
 //            ],
             [
+                'attribute'=>'type',
+                'filter'=> \concepture\yii2banner\enum\BannerTypesEnum::arrayList(),
+                'value'=>function($data) {
+                    return $data->getBannerTypeLabel();
+                }
+            ],
+            [
                 'attribute'=>'status',
                 'filter'=> StatusEnum::arrayList(),
                 'value'=>function($data) {
