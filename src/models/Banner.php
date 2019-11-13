@@ -11,6 +11,7 @@ use concepture\yii2logic\models\traits\StatusTrait;
 use concepture\yii2handbook\converters\LocaleConverter;
 use concepture\yii2handbook\models\traits\DomainTrait;
 use concepture\yii2banner\models\traits\BannerTrait;
+use concepture\yii2banner\models\traits\BannerUrlLinkTrait;
 
 /**
  * Banner model
@@ -37,6 +38,7 @@ class Banner extends ActiveRecord
     use StatusTrait;
     use DomainTrait;
     use BannerTrait;
+    use BannerUrlLinkTrait;
 
     public $locale;
     public $title;
