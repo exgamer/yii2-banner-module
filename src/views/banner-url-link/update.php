@@ -15,6 +15,7 @@ $this->params['breadcrumbs'][] = Yii::t('banner', 'Редактировать');
 
     <?= $this->render('_form', [
         'model' => $model,
+        'originModel' => $originModel,
     ]) ?>
 
 </div>
