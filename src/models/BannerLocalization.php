@@ -18,6 +18,8 @@ use concepture\yii2logic\validators\TranslitValidator;
  * @property integer $status
  * @property datetime $from_at
  * @property datetime $to_at
+ * @property string $url
+ * @property string $target
  * @property datetime $created_at
  * @property datetime $updated_at
  *
@@ -61,9 +63,17 @@ class BannerLocalization extends ActiveRecord
                 [
                     'title',
                     'image',
+                    'url',
                 ],
                 'string',
                 'max'=>1024
+            ],
+            [
+                [
+                    'target'
+                ],
+                'string',
+                'max'=>20
             ],
             [
                 [
@@ -96,6 +106,8 @@ class BannerLocalization extends ActiveRecord
             'image' => Yii::t('banner','Изображение'),
             'from_at' => Yii::t('banner','Дата с'),
             'to_at' => Yii::t('banner','Дата по'),
+            'url' => Yii::t('banner','Ссылка'),
+            'target' => Yii::t('banner','Атрибут target ссылки'),
             'created_at' => Yii::t('banner','Дата создания'),
             'updated_at' => Yii::t('banner','Дата обновления'),
         ];

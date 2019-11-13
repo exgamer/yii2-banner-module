@@ -22,6 +22,8 @@ class BannerForm extends Form
     public $image;
     public $from_at;
     public $to_at;
+    public $url;
+    public $target;
     public $status = StatusEnum::INACTIVE;
 
     /**

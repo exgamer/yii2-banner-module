@@ -20,6 +20,8 @@ class m191002_151217_banner_localization extends Migration
             'locale' => $this->integer()->notNull(),
             'image' => $this->string(1024),
             'title' => $this->string(1024),
+            'url' => $this->string(1024),
+            'target' => $this->string(20),
             'content' => $this->text(),
             'from_at' => $this->date(),
             'to_at' => $this->date(),

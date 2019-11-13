@@ -24,6 +24,8 @@ use concepture\yii2banner\models\traits\BannerUrlLinkTrait;
  * @property string $content
  * @property string $seo_name
  * @property string $image
+ * @property string $url
+ * @property string $target
  * @property integer $status
  * @property datetime $from_at
  * @property datetime $to_at
@@ -46,7 +48,8 @@ class Banner extends ActiveRecord
     public $image;
     public $from_at;
     public $to_at;
-
+    public $url;
+    public $target;
 
 
     /**
@@ -82,10 +85,18 @@ class Banner extends ActiveRecord
                 [
                     'title',
                     'seo_name',
+                    'url',
                     'image',
                 ],
                 'string',
                 'max'=>1024
+            ],
+            [
+                [
+                    'target'
+                ],
+                'string',
+                'max'=>20
             ],
             [
                 [
@@ -135,6 +146,8 @@ class Banner extends ActiveRecord
             'image' => Yii::t('banner','Изображение'),
             'from_at' => Yii::t('banner','Дата с'),
             'to_at' => Yii::t('banner','Дата по'),
+            'url' => Yii::t('banner','Ссылка'),
+            'target' => Yii::t('banner','Атрибут target ссылки'),
             'created_at' => Yii::t('banner','Дата создания'),
             'updated_at' => Yii::t('banner','Дата обновления'),
         ];
