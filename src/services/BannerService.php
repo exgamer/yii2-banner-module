@@ -38,6 +38,7 @@ class BannerService extends Service
             $query->innerJoinWith('urlLinks');
             $query->andWhere("u.url_md5_hash = :url_md5_hash", [':url_md5_hash' => $md5]);
             $query->andWhere("status = :status", [':status' => StatusEnum::ACTIVE]);
+            $query->orderBy("u.sort ASC");
         });
     }
 }
