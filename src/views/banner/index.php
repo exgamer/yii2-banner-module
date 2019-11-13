@@ -81,13 +81,15 @@ $this->params['breadcrumbs'][] = $this->title;
                     'view'=> function ($url, $model) {
                         return Html::a(
                             '<span class="glyphicon glyphicon-eye-open"></span>',
-                            ['view', 'id' => $model['id'], 'locale' => $model['locale']]
+                            ['view', 'id' => $model['id'], 'locale' => $model['locale']],
+                            ['data-pjax' => '0']
                         );
                     },
                     'update'=> function ($url, $model) {
                         return Html::a(
                             '<span class="glyphicon glyphicon-pencil"></span>',
-                            ['update', 'id' => $model['id'], 'locale' => $model['locale']]
+                            ['update', 'id' => $model['id'], 'locale' => $model['locale']],
+                            ['data-pjax' => '0']
                         );
                     },
                     'activate'=> function ($url, $model) {
@@ -99,7 +101,6 @@ $this->params['breadcrumbs'][] = $this->title;
                             ['status-change', 'id' => $model['id'], 'status' => StatusEnum::ACTIVE],
                             [
                                 'title' => Yii::t('banner', 'Активировать'),
-                                'data-pjax' => '0',
                                 'data-confirm' => Yii::t('banner', 'Активировать ?'),
                                 'data-method' => 'post',
                             ]
@@ -114,7 +115,6 @@ $this->params['breadcrumbs'][] = $this->title;
                             ['status-change', 'id' => $model['id'], 'status' => StatusEnum::INACTIVE],
                             [
                                 'title' => Yii::t('banner', 'Деактивировать'),
-                                'data-pjax' => '0',
                                 'data-confirm' => Yii::t('banner', 'Деактивировать ?'),
                                 'data-method' => 'post',
                             ]
