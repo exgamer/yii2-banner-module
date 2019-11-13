@@ -13,6 +13,7 @@ use Yii;
  */
 class BannerForm extends Form
 {
+    public $type;
     public $user_id;
     public $domain_id;
     public $locale = "ru";
@@ -37,6 +38,7 @@ class BannerForm extends Form
                     'title',
                     'locale',
                     'image',
+                    'type',
                 ],
                 'required'
             ],

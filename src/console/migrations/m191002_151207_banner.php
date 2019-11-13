@@ -16,6 +16,7 @@ class m191002_151207_banner extends Migration
     {
         $this->addTable([
             'id' => $this->primaryKey(),
+            'type' => $this->integer()->notNull(),
             'user_id' => $this->integer()->notNull(),
             'domain_id' => $this->integer(),
             'seo_name' => $this->string(1024),
@@ -23,6 +24,7 @@ class m191002_151207_banner extends Migration
             'created_at' => $this->dateTime()->defaultValue(new \yii\db\Expression("NOW()")),
             'updated_at' => $this->dateTime()->append('ON UPDATE NOW()')
         ]);
+        $this->addIndex(['type']);
         $this->addIndex(['user_id']);
         $this->addIndex(['domain_id']);
         $this->addIndex(['status']);

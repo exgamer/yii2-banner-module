@@ -5,6 +5,7 @@ use yii\widgets\ActiveForm;
 use mihaildev\ckeditor\CKEditor;
 use yii\widgets\Pjax;
 use concepture\yii2handbook\enum\TargetAttributeEnum;
+use concepture\yii2banner\enum\BannerTypesEnum;
 ?>
 
 <div class="post-category-form">
@@ -24,7 +25,22 @@ use concepture\yii2handbook\enum\TargetAttributeEnum;
 
     <?php $form = ActiveForm::begin() ?>
     <?= $form->errorSummary($model) ?>
+    <?= $form->field($model, 'type')->dropDownList(
+        BannerTypesEnum::arrayList(),
+        [
+            'prompt' => Yii::t('banner', 'Выберите тип баннера')
+        ]
+    );?>
     <?= $form->field($model, 'image')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($model, 'content')->widget(CKEditor::className(),[
+        'editorOptions' => [
+            'preset' => 'full', //разработанны стандартные настройки basic, standard, full данную возможность не обязательно использовать
+            'inline' => false, //по умолчанию false
+            'allowedContent' => true,
+        ],
+    ]); ?>
+
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
     <?= $form->field($model, 'url')->textInput(['maxlength' => true]) ?>
     <?= $form->field($model, 'target')->dropDownList(
@@ -33,13 +49,7 @@ use concepture\yii2handbook\enum\TargetAttributeEnum;
             'prompt' => Yii::t('banner', 'Выберите значение target')
         ]
     );?>
-    <?= $form->field($model, 'content')->widget(CKEditor::className(),[
-        'editorOptions' => [
-            'preset' => 'full', //разработанны стандартные настройки basic, standard, full данную возможность не обязательно использовать
-            'inline' => false, //по умолчанию false
-            'allowedContent' => true,
-        ],
-    ]); ?>
+
     <?= $form->field($model, 'seo_name')->textInput(['maxlength' => true]) ?>
     <div class="row">
         <div class="col-md-6">

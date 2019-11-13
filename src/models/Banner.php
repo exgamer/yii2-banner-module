@@ -1,6 +1,7 @@
 <?php
 namespace concepture\yii2banner\models;
 
+use concepture\yii2banner\enum\BannerTypesEnum;
 use concepture\yii2user\models\User;
 use concepture\yii2logic\validators\UniquePropertyValidator;
 use Yii;
@@ -71,7 +72,8 @@ class Banner extends ActiveRecord
                     'status',
                     'user_id',
                     'domain_id',
-                    'locale'
+                    'locale',
+                    'type'
                 ],
                 'integer'
             ],
@@ -135,6 +137,7 @@ class Banner extends ActiveRecord
     {
         return [
             'id' => Yii::t('banner','#'),
+            'type' => Yii::t('banner','Тип баннера'),
             'user_id' => Yii::t('banner','Пользователь'),
             'domain_id' => Yii::t('banner','Домен'),
             'status' => Yii::t('banner','Статус'),
@@ -177,5 +180,15 @@ class Banner extends ActiveRecord
     public static function getLocaleConverterClass()
     {
         return LocaleConverter::class;
+    }
+
+    /**
+     * Возвращает метку для типа баннера
+     * 
+     * @return string
+     */
+    public function getBannerTypeLabel()
+    {
+        return BannerTypesEnum::label($this->type);
     }
 }

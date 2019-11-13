@@ -25,7 +25,8 @@ class BannerSearch extends Banner
                 [
                     'id',
                     'status',
-                    'domain_id'
+                    'domain_id',
+                    'type'
                 ],
                 'integer'
             ],
@@ -46,6 +47,9 @@ class BannerSearch extends Banner
         ]);
         $query->andFilterWhere([
             'status' => $this->status
+        ]);
+        $query->andFilterWhere([
+            'type' => $this->type
         ]);
         $query->andFilterWhere([
             'domain_id' => $this->domain_id
