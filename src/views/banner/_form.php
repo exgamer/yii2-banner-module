@@ -4,6 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use mihaildev\ckeditor\CKEditor;
 use yii\widgets\Pjax;
+use concepture\yii2handbook\enum\TargetAttributeEnum;
 ?>
 
 <div class="post-category-form">
@@ -26,7 +27,12 @@ use yii\widgets\Pjax;
     <?= $form->field($model, 'image')->textInput(['maxlength' => true]) ?>
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
     <?= $form->field($model, 'url')->textInput(['maxlength' => true]) ?>
-    <?= $form->field($model, 'target')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'target')->dropDownList(
+        TargetAttributeEnum::arrayList(),
+        [
+            'prompt' => Yii::t('banner', 'Выберите значение target')
+        ]
+    );?>
     <?= $form->field($model, 'content')->widget(CKEditor::className(),[
         'editorOptions' => [
             'preset' => 'full', //разработанны стандартные настройки basic, standard, full данную возможность не обязательно использовать
