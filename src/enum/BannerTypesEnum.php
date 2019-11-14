@@ -7,8 +7,8 @@ use concepture\yii2logic\enum\Enum;
 
 class BannerTypesEnum extends Enum
 {
-    const IMAGE = 0;
-    const HTML = 1;
+    const IMAGE = 1;
+    const HTML = 2;
 
     public static function labels()
     {
