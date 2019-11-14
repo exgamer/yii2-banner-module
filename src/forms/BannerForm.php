@@ -61,6 +61,10 @@ class BannerForm extends Form
 
     public function beforeValidate()
     {
+        /**
+         * Если выставлен тип баннера
+         * устанавливаем сценарий валидации
+         */
         if ($this->type) {
             $this->setScenario($this->type);
         }
