@@ -2,6 +2,7 @@
 namespace concepture\yii2banner\forms;
 
 
+use concepture\yii2banner\enum\BannerTypesEnum;
 use concepture\yii2logic\forms\Form;
 use concepture\yii2logic\enum\StatusEnum;
 use Yii;
@@ -27,6 +28,21 @@ class BannerForm extends Form
     public $target;
     public $status = StatusEnum::INACTIVE;
 
+    public function scenarios()
+    {
+        $scenarios = parent::scenarios();
+        /**
+         * Сценарий для баннера с изображением
+         */
+        $scenarios[BannerTypesEnum::IMAGE] = ['title', 'locale', 'image', 'type'];
+        /**
+         * Сценарий для баннера с HTML контентом
+         */
+        $scenarios[BannerTypesEnum::HTML] = ['title', 'locale', 'content', 'type'];
+
+        return $scenarios;
+    }
+
     /**
      * @see Form::formRules()
      */
@@ -39,9 +55,19 @@ class BannerForm extends Form
                     'locale',
                     'image',
                     'type',
+                    'content'
                 ],
                 'required'
             ],
         ];
+    }
+
+    public function beforeValidate()
+    {
+        if ($this->type) {
+            $this->setScenario($this->type);
+        }
+
+        return true;
     }
 }
