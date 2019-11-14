@@ -28,19 +28,16 @@ class BannerForm extends Form
     public $target;
     public $status = StatusEnum::INACTIVE;
 
-    public function scenarios()
+    protected function extendedScenarios()
     {
-        $scenarios = parent::scenarios();
-        /**
-         * Сценарий для баннера с изображением
-         */
-        $scenarios[BannerTypesEnum::IMAGE] = ['title', 'locale', 'image', 'type'];
-        /**
-         * Сценарий для баннера с HTML контентом
-         */
-        $scenarios[BannerTypesEnum::HTML] = ['title', 'locale', 'content', 'type'];
-
-        return $scenarios;
+        return [
+            BannerTypesEnum::IMAGE => [
+                'content'
+            ],
+            BannerTypesEnum::HTML => [
+                'image'
+            ]
+        ];
     }
 
     /**
