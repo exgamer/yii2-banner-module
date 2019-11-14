@@ -25,7 +25,8 @@ class BannerService extends Service
     }
 
     /**
-     * Возвращает баннеры для текущего url по хешу md5 url
+     * Возвращает активные баннеры для текущего url по хешу md5 url
+     * с учетом from_at и to_at
      *
      * @return array
      */
