@@ -28,7 +28,7 @@ use concepture\yii2banner\enum\BannerTypesEnum;
     <?= $form->field($model, 'type')->dropDownList(
         BannerTypesEnum::arrayList(),
         [
-            'onchange'=> "$.pjax.reload({container: '#form', 'type': 'POST', 'data': {'BannerForm[type]': this.value}});"
+            'onchange'=> "$.pjax.reload({container: '#form', 'type': 'POST', 'data': {'BannerForm[type]': this.value, 'reload': true}});"
             //'prompt' => Yii::t('banner', 'Выберите тип баннера')
         ]
     );?>
