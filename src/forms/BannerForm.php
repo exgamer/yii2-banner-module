@@ -14,7 +14,7 @@ use Yii;
  */
 class BannerForm extends Form
 {
-    public $type;
+    public $type = BannerTypesEnum::IMAGE;
     public $user_id;
     public $domain_id;
     public $locale = "ru";
