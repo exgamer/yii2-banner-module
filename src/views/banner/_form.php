@@ -23,7 +23,7 @@ use concepture\yii2banner\enum\BannerTypesEnum;
 
 
 
-    <?php $form = ActiveForm::begin() ?>
+    <?php $form = ActiveForm::begin(['enableClientValidation'=>false]) ?>
     <?= $form->errorSummary($model) ?>
     <?= $form->field($model, 'type')->dropDownList(
         BannerTypesEnum::arrayList(),
