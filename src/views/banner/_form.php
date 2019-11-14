@@ -28,7 +28,7 @@ use concepture\yii2banner\enum\BannerTypesEnum;
     <?= $form->field($model, 'type')->dropDownList(
         BannerTypesEnum::arrayList(),
         [
-            'prompt' => Yii::t('banner', 'Выберите тип баннера')
+            //'prompt' => Yii::t('banner', 'Выберите тип баннера')
         ]
     );?>
     <?= $form->field($model, 'image')->textInput(['maxlength' => true]) ?>
