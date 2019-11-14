@@ -9,7 +9,7 @@ use concepture\yii2banner\enum\BannerTypesEnum;
 ?>
 
 <div class="post-category-form">
-    <?php Pjax::begin(); ?>
+    <?php Pjax::begin(['id' => 'form']); ?>
     <div class="form-group">
         <?= Html::label(Yii::t('banner', 'Версии'))?>
         <?php foreach (Yii::$app->localeService->catalog() as $key => $locale):?>
@@ -28,18 +28,23 @@ use concepture\yii2banner\enum\BannerTypesEnum;
     <?= $form->field($model, 'type')->dropDownList(
         BannerTypesEnum::arrayList(),
         [
+            'onchange'=> "$.pjax.reload({container: '#form', 'type': 'POST', 'data': {'BannerForm[type]': this.value}});"
             //'prompt' => Yii::t('banner', 'Выберите тип баннера')
         ]
     );?>
-    <?= $form->field($model, 'image')->textInput(['maxlength' => true]) ?>
+    <?php if ($model->type == BannerTypesEnum::IMAGE) :?>
+        <?= $form->field($model, 'image')->textInput(['maxlength' => true]) ?>
+    <?php endif;?>
 
-    <?= $form->field($model, 'content')->widget(CKEditor::className(),[
-        'editorOptions' => [
-            'preset' => 'full', //разработанны стандартные настройки basic, standard, full данную возможность не обязательно использовать
-            'inline' => false, //по умолчанию false
-            'allowedContent' => true,
-        ],
-    ]); ?>
+    <?php if ($model->type == BannerTypesEnum::HTML) :?>
+        <?= $form->field($model, 'content')->widget(CKEditor::className(),[
+            'editorOptions' => [
+                'preset' => 'full', //разработанны стандартные настройки basic, standard, full данную возможность не обязательно использовать
+                'inline' => false, //по умолчанию false
+                'allowedContent' => true,
+            ],
+        ]); ?>
+    <?php endif;?>
 
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
     <?= $form->field($model, 'url')->textInput(['maxlength' => true]) ?>
