@@ -28,6 +28,7 @@ class m191111_125606__banner_url extends Migration
         $this->execute("ALTER TABLE banner_url_link
             ADD INDEX bul_url_md5_hash_index
             USING HASH (url_md5_hash);");
+        $this->addForeign('banner_id', 'banner','id');
     }
 
     /**
