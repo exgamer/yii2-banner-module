@@ -158,7 +158,7 @@ class Banner extends ActiveRecord
             'target' => Yii::t('banner','Атрибут target ссылки'),
             'created_at' => Yii::t('banner','Дата создания'),
             'updated_at' => Yii::t('banner','Дата обновления'),
-            'id_deleted' => Yii::t('banner','Удален'),
+            'is_deleted' => Yii::t('banner','Удален'),
         ];
     }
 
