@@ -15,7 +15,7 @@ class m191111_125606__banner_url extends Migration
     public function up()
     {
         $this->addTable([
-            'id' => $this->primaryKey(),
+            'id' => $this->bigPrimaryKey(),
             'banner_id' => $this->integer()->notNull(),
             'url' => $this->string(255)->notNull(),
             'url_md5_hash' => $this->string(32),

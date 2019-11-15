@@ -15,7 +15,7 @@ class m191002_151217_banner_localization extends Migration
     public function up()
     {
         $this->addTable([
-            'id' => $this->primaryKey(),
+            'id' => $this->bigPrimaryKey(),
             'entity_id' => $this->integer()->notNull(),
             'locale' => $this->integer()->notNull(),
             'image' => $this->string(1024),
