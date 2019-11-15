@@ -107,7 +107,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         );
                     },
                     'activate'=> function ($url, $model) {
-                        if ($model['id_deleted'] == IsDeletedEnum::DELETED){
+                        if ($model['is_deleted'] == IsDeletedEnum::DELETED){
                             return '';
                         }
                         if ($model['status'] == StatusEnum::ACTIVE){
@@ -124,7 +124,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         );
                     },
                     'deactivate'=> function ($url, $model) {
-                        if ($model['id_deleted'] == IsDeletedEnum::DELETED){
+                        if ($model['is_deleted'] == IsDeletedEnum::DELETED){
                             return '';
                         }
                         if ($model['status'] == StatusEnum::INACTIVE){
@@ -141,7 +141,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         );
                     },
                     'delete'=> function ($url, $model) {
-                        if ($model['id_deleted'] == IsDeletedEnum::DELETED){
+                        if ($model['is_deleted'] == IsDeletedEnum::DELETED){
                             return '';
                         }
 
