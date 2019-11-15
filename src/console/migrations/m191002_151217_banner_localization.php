@@ -16,7 +16,7 @@ class m191002_151217_banner_localization extends Migration
     {
         $this->addTable([
             'id' => $this->bigPrimaryKey(),
-            'entity_id' => $this->integer()->notNull(),
+            'entity_id' => $this->bigInteger()->notNull(),
             'locale' => $this->integer()->notNull(),
             'image' => $this->string(1024),
             'title' => $this->string(1024),

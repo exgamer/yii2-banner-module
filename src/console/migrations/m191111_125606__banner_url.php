@@ -16,7 +16,7 @@ class m191111_125606__banner_url extends Migration
     {
         $this->addTable([
             'id' => $this->bigPrimaryKey(),
-            'banner_id' => $this->integer()->notNull(),
+            'banner_id' => $this->bigInteger()->notNull(),
             'url' => $this->string(255)->notNull(),
             'url_md5_hash' => $this->string(32),
             'sort' => $this->integer()->defaultValue(0),

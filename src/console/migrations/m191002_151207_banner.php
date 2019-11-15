@@ -17,8 +17,8 @@ class m191002_151207_banner extends Migration
         $this->addTable([
             'id' => $this->bigPrimaryKey(),
             'type' => $this->integer()->notNull(),
-            'user_id' => $this->integer()->notNull(),
-            'domain_id' => $this->integer(),
+            'user_id' => $this->bigInteger()->notNull(),
+            'domain_id' => $this->bigInteger(),
             'seo_name' => $this->string(1024),
             'status' => $this->smallInteger()->defaultValue(0),
             'created_at' => $this->dateTime()->defaultValue(new \yii\db\Expression("NOW()")),
