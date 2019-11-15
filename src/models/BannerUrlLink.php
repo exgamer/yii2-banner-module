@@ -60,6 +60,14 @@ class BannerUrlLink extends ActiveRecord
                 ],
                 MD5Validator::className(),
                 'source' => 'url'
+            ],
+            [
+                [
+                    'banner_id',
+                    'url_md5_hash'
+                ],
+                'unique',
+                'targetAttribute' => ['banner_id', 'url_md5_hash']
             ]
         ];
     }
