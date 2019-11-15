@@ -38,6 +38,8 @@ use concepture\yii2banner\models\traits\BannerUrlLinkTrait;
  */
 class Banner extends ActiveRecord
 {
+    public $allow_physical_delete = false;
+
     use HasLocalizationTrait;
     use StatusTrait;
     use IsDeletedEnum;
