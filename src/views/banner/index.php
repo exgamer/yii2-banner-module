@@ -100,6 +100,10 @@ $this->params['breadcrumbs'][] = $this->title;
                         );
                     },
                     'update'=> function ($url, $model) {
+                        if ($model['is_deleted'] == IsDeletedEnum::DELETED){
+                            return '';
+                        }
+
                         return Html::a(
                             '<span class="glyphicon glyphicon-pencil"></span>',
                             ['update', 'id' => $model['id'], 'locale' => $model['locale']],
