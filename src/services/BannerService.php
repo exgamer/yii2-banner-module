@@ -8,6 +8,7 @@ use concepture\yii2logic\services\traits\StatusTrait;
 use concepture\yii2logic\services\traits\LocalizedReadTrait;
 use yii\db\ActiveQuery;
 use concepture\yii2logic\enum\StatusEnum;
+use concepture\yii2logic\enum\IsDeletedEnum;
 
 /**
  * Class BannerService
@@ -48,6 +49,7 @@ class BannerService extends Service
             $query->innerJoinWith('urlLinks');
             $query->andWhere("u.url_md5_hash = :url_md5_hash", [':url_md5_hash' => $md5]);
             $query->andWhere("status = :status", [':status' => StatusEnum::ACTIVE]);
+            $query->andWhere("is_deleted = :is_deleted", [':is_deleted' => IsDeletedEnum::NOT_DELETED]);
             $query->orderBy("u.sort ASC");
         });
     }
