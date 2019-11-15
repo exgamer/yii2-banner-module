@@ -26,7 +26,8 @@ class BannerSearch extends Banner
                     'id',
                     'status',
                     'domain_id',
-                    'type'
+                    'type',
+                    'is_deleted',
                 ],
                 'integer'
             ],
@@ -53,6 +54,9 @@ class BannerSearch extends Banner
         ]);
         $query->andFilterWhere([
             'domain_id' => $this->domain_id
+        ]);
+        $query->andFilterWhere([
+            'is_deleted' => $this->is_deleted
         ]);
         $query->andFilterWhere(['like', "seo_name", $this->seo_name]);
         static::$search_by_locale_callable = function($q, $localizedAlias){

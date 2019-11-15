@@ -6,6 +6,7 @@ use concepture\yii2user\enum\UserRoleEnum;
 use concepture\yii2logic\controllers\web\localized\Controller;
 use concepture\yii2logic\actions\web\StatusChangeLocalizedAction;
 use concepture\yii2logic\actions\web\LocalizedAutocompleteListAction;
+use concepture\yii2logic\actions\web\UndeleteLocalizedAction;
 
 /**
  * Class StaticBlockController
@@ -18,7 +19,7 @@ class BannerController extends Controller
     {
         return [
             [
-                'actions' => ['index', 'view','create', 'update', 'delete', 'status-change', 'list'],
+                'actions' => ['index', 'view','create', 'update', 'delete', 'undelete', 'status-change', 'list'],
                 'allow' => true,
                 'roles' => [UserRoleEnum::ADMIN],
             ]
@@ -33,6 +34,7 @@ class BannerController extends Controller
         return array_merge($actions,[
             'status-change' => StatusChangeLocalizedAction::class,
             'list' => LocalizedAutocompleteListAction::class,
+            'undelete' => UndeleteLocalizedAction::class,
         ]);
     }
 }

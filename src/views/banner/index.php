@@ -1,6 +1,7 @@
 <?php
 
 use concepture\yii2logic\enum\StatusEnum;
+use concepture\yii2logic\enum\IsDeletedEnum;
 use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
@@ -79,7 +80,13 @@ $this->params['breadcrumbs'][] = $this->title;
                 }
             ],
             'created_at',
-            //'updated_at',
+            [
+                'attribute'=>'is_deleted',
+                'filter'=> IsDeletedEnum::arrayList(),
+                'value'=>function($data) {
+                    return $data->isDeletedLabel();
+                }
+            ],
 
             [
                 'class'=>'yii\grid\ActionColumn',
@@ -100,6 +107,9 @@ $this->params['breadcrumbs'][] = $this->title;
                         );
                     },
                     'activate'=> function ($url, $model) {
+                        if ($model['id_deleted'] == IsDeletedEnum::DELETED){
+                            return '';
+                        }
                         if ($model['status'] == StatusEnum::ACTIVE){
                             return '';
                         }
@@ -114,6 +124,9 @@ $this->params['breadcrumbs'][] = $this->title;
                         );
                     },
                     'deactivate'=> function ($url, $model) {
+                        if ($model['id_deleted'] == IsDeletedEnum::DELETED){
+                            return '';
+                        }
                         if ($model['status'] == StatusEnum::INACTIVE){
                             return '';
                         }
@@ -127,7 +140,21 @@ $this->params['breadcrumbs'][] = $this->title;
                             ]
                         );
                     },
-                    'delete'
+                    'delete'=> function ($url, $model) {
+                        if ($model['id_deleted'] == IsDeletedEnum::DELETED){
+                            return '';
+                        }
+
+                        return Html::a(
+                            '<span class="glyphicon glyphicon-trash"></span>',
+                            ['delete', 'id' => $model['id']],
+                            [
+                                'title' => Yii::t('banner', 'Удалить'),
+                                'data-confirm' => Yii::t('banner', 'Удалить ?'),
+                                'data-method' => 'post',
+                            ]
+                        );
+                    }
                 ]
             ],
         ],

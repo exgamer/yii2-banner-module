@@ -9,6 +9,7 @@ use concepture\yii2logic\models\ActiveRecord;
 use concepture\yii2logic\validators\TranslitValidator;
 use concepture\yii2logic\models\traits\HasLocalizationTrait;
 use concepture\yii2logic\models\traits\StatusTrait;
+use concepture\yii2logic\models\traits\IsDeletedEnum;
 use concepture\yii2handbook\converters\LocaleConverter;
 use concepture\yii2handbook\models\traits\DomainTrait;
 use concepture\yii2banner\models\traits\BannerTrait;
@@ -39,6 +40,7 @@ class Banner extends ActiveRecord
 {
     use HasLocalizationTrait;
     use StatusTrait;
+    use IsDeletedEnum;
     use DomainTrait;
     use BannerTrait;
     use BannerUrlLinkTrait;
@@ -153,6 +155,7 @@ class Banner extends ActiveRecord
             'target' => Yii::t('banner','Атрибут target ссылки'),
             'created_at' => Yii::t('banner','Дата создания'),
             'updated_at' => Yii::t('banner','Дата обновления'),
+            'id_deleted' => Yii::t('banner','Удален'),
         ];
     }
 
