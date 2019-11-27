@@ -46,6 +46,9 @@ class BannerService extends Service
         };
 
         return $this->getAllByCondition(function(ActiveQuery $query) use($md5) {
+            $domainId = Yii::$app->domainService->getCurrentDomainId();
+            $sql = "domain_id = :domain_id OR domain_id IS NULL";
+            $query->andWhere($sql, [':domain_id' => $domainId]);
             $query->innerJoinWith('urlLinks');
             $query->andWhere("u.url_md5_hash = :url_md5_hash", [':url_md5_hash' => $md5]);
             $query->andWhere("status = :status", [':status' => StatusEnum::ACTIVE]);
