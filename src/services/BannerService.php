@@ -9,6 +9,8 @@ use concepture\yii2logic\services\traits\LocalizedReadTrait;
 use yii\db\ActiveQuery;
 use concepture\yii2logic\enum\StatusEnum;
 use concepture\yii2logic\enum\IsDeletedEnum;
+use concepture\yii2handbook\services\traits\ModifySupportTrait as HandbookModifySupportTrait;
+use concepture\yii2handbook\services\traits\ReadSupportTrait as HandbookReadSupportTrait;
 
 /**
  * Class BannerService
@@ -19,10 +21,25 @@ class BannerService extends Service
 {
     use StatusTrait;
     use LocalizedReadTrait;
+    use HandbookModifySupportTrait;
+    use HandbookReadSupportTrait;
 
     protected function beforeCreate(Model $form)
     {
         $form->user_id = Yii::$app->user->identity->id;
+        $this->setCurrentDomain($form);
+    }
+
+    /**
+     * Метод для расширения find()
+     * !! ВНимание эти данные будут поставлены в find по умолчанию все всех случаях
+     *
+     * @param ActiveQuery $query
+     * @see \concepture\yii2logic\services\Service::extendFindCondition()
+     */
+    protected function extendQuery(ActiveQuery $query)
+    {
+        $this->applyDomain($query);
     }
 
     /**
@@ -46,9 +63,6 @@ class BannerService extends Service
         };
 
         return $this->getAllByCondition(function(ActiveQuery $query) use($md5) {
-            $domainId = Yii::$app->domainService->getCurrentDomainId();
-            $sql = "domain_id = :domain_id OR domain_id IS NULL";
-            $query->andWhere($sql, [':domain_id' => $domainId]);
             $query->innerJoinWith('urlLinks');
             $query->andWhere("u.url_md5_hash = :url_md5_hash", [':url_md5_hash' => $md5]);
             $query->andWhere("status = :status", [':status' => StatusEnum::ACTIVE]);
