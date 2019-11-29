@@ -41,7 +41,7 @@ class BannerSearch extends Banner
         ];
     }
 
-    protected function extendQuery(ActiveQuery $query)
+    public function extendQuery(ActiveQuery $query)
     {
         $query->andFilterWhere([
             static::tableName().'.id' => $this->id
@@ -64,7 +64,7 @@ class BannerSearch extends Banner
         };
     }
 
-    protected function extendDataProvider(ActiveDataProvider $dataProvider)
+    public function extendDataProvider(ActiveDataProvider $dataProvider)
     {
         $this->addSortByLocalizationAttribute($dataProvider, 'title');
     }
