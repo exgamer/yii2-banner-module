@@ -78,12 +78,7 @@ use concepture\yii2banner\enum\BannerTypesEnum;
                 ]) ?>
         </div>
     </div>
-    <?= $form->field($model, 'domain_id')->dropDownList(
-        Yii::$app->domainService->catalog(),
-        [
-            'prompt' => Yii::t('banner', 'Выберите домен')
-        ]
-    );?>
+
     <div class="form-group">
         <?= Html::submitButton(Yii::t('banner', 'Сохранить'), ['class' => 'btn btn-success']) ?>
     </div>
