@@ -3,7 +3,7 @@ namespace concepture\yii2banner\forms;
 
 
 use concepture\yii2banner\enum\BannerTypesEnum;
-use concepture\yii2logic\forms\Form;
+use kamaelkz\yii2admin\v1\forms\BaseForm;
 use concepture\yii2logic\enum\StatusEnum;
 use Yii;
 
@@ -12,7 +12,7 @@ use Yii;
  * @package concepture\yii2banner\forms
  * @author Olzhas Kulzhambekov <exgamer@live.ru>
  */
-class BannerForm extends Form
+class BannerForm extends BaseForm
 {
     public $type = BannerTypesEnum::IMAGE;
     public $user_id;
