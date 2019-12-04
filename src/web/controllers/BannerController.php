@@ -5,7 +5,7 @@ namespace concepture\yii2banner\web\controllers;
 use concepture\yii2user\enum\UserRoleEnum;
 use concepture\yii2logic\controllers\web\localized\Controller;
 use concepture\yii2logic\actions\web\StatusChangeLocalizedAction;
-use concepture\yii2logic\actions\web\LocalizedAutocompleteListAction;
+use concepture\yii2logic\actions\web\AutocompleteListAction;
 use concepture\yii2logic\actions\web\UndeleteLocalizedAction;
 
 /**
@@ -33,7 +33,7 @@ class BannerController extends Controller
 
         return array_merge($actions,[
             'status-change' => StatusChangeLocalizedAction::class,
-            'list' => LocalizedAutocompleteListAction::class,
+            'list' => AutocompleteListAction::class,
             'undelete' => UndeleteLocalizedAction::class,
         ]);
     }
