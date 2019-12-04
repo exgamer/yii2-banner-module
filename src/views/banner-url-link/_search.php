@@ -10,7 +10,7 @@ use concepture\yii2banner\enum\BannerUrlLinkTypesEnum;
         <?= $form->field($model,'id')->textInput();?>
     </div>
     <div class="col-lg-4 col-md-6 col-sm-12">
-        <?= $form->field($model,'alias')->textInput();?>
+        <?= $form->field($model,'group')->textInput();?>
     </div>
     <div class="col-lg-4 col-md-6 col-sm-12">
         <?= $form
