@@ -1,162 +1,154 @@
 <?php
 
-use concepture\yii2logic\enum\StatusEnum;
-use concepture\yii2logic\enum\IsDeletedEnum;
 use yii\helpers\Html;
 use yii\grid\GridView;
-use yii\widgets\Pjax;
+use kamaelkz\yii2admin\v1\widgets\formelements\Pjax;
+use concepture\yii2handbook\converters\LocaleConverter;
+use concepture\yii2logic\enum\StatusEnum;
+use concepture\yii2logic\enum\IsDeletedEnum;
+use yii\helpers\Url;
 
-
-$this->title = Yii::t('banner', 'Баннеры');
-$this->params['breadcrumbs'][] = $this->title;
+$this->setTitle($searchModel::label());
+$this->pushBreadcrumbs($this->title);
+$this->viewHelper()->pushPageHeader();
 ?>
-<div class="post-category-index">
+<?php Pjax::begin(); ?>
 
-    <h1><?= Html::encode($this->title) ?></h1>
-
-    <p>
-        <?= Html::a(Yii::t('banner', 'Добавить'), ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
-
-    <?php Pjax::begin(); ?>
-    <div class="form-group">
-        <?= Html::label(Yii::t('banner', 'Версии'))?>
+<?php if (Yii::$app->localeService->catalogCount() > 1): ?>
+    <ul class="nav nav-tabs nav-tabs-solid nav-justified bg-light">
         <?php foreach (Yii::$app->localeService->catalog() as $key => $locale):?>
-            <?= Html::a(
-                $locale,
-                \yii\helpers\Url::current(['locale' => $key]),
-                ['class' => 'btn btn-lg btn-primary ' . ($key ==  $searchModel::currentLocale()  ? "active" : "")]
-            ) ?>
+            <li class="nav-item">
+                <?= Html::a(
+                    $locale,
+                    \yii\helpers\Url::current(['locale' => $key]),
+                    ['class' => 'nav-link ' . ($key ==  $searchModel::currentLocale()  ? "active" : "")]
+                ) ?>
+            </li>
         <?php endforeach;?>
-    </div>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+    </ul>
+<?php endif; ?>
 
-    <?= GridView::widget([
-        'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
-        'columns' => [
-            'id',
-            'alias',
-//            [
-//                'attribute'=>'locale',
-//                'filter'=>Yii::$app->localeService->getAllList('locale', 'locale')
-//            ],
-//            'seo_name',
-//            'image',
-            'from_at',
-            'to_at',
-//            [
-//                'format' => ['image',['width'=>'100']],
-//                'value'=>function($data) {
-//                    return $data->image;
-//                },
-//            ],
-            [
-                'attribute'=>'type',
-                'filter'=> \concepture\yii2banner\enum\BannerTypesEnum::arrayList(),
-                'value'=>function($data) {
-                    return $data->getBannerTypeLabel();
-                }
-            ],
-            [
-                'attribute'=>'status',
-                'filter'=> StatusEnum::arrayList(),
-                'value'=>function($data) {
-                    return $data->statusLabel();
-                }
-            ],
-            [
-                'attribute'=>'Версии',
-                'value'=>function($data) {
-
-                    return implode(",", $data->locales());
-                }
-            ],
-            'created_at',
-            [
-                'attribute'=>'is_deleted',
-                'filter'=> IsDeletedEnum::arrayList(),
-                'value'=>function($data) {
-                    return $data->isDeletedLabel();
-                }
-            ],
-
-            [
-                'class'=>'yii\grid\ActionColumn',
-                'template'=>'{view} {update} {activate} {deactivate} {delete}',
-                'buttons'=>[
-                    'view'=> function ($url, $model) {
-                        return Html::a(
-                            '<span class="glyphicon glyphicon-eye-open"></span>',
-                            ['view', 'id' => $model['id'], 'locale' => $model['locale']],
-                            ['data-pjax' => '0']
-                        );
-                    },
-                    'update'=> function ($url, $model) {
-                        if ($model['is_deleted'] == IsDeletedEnum::DELETED){
-                            return '';
-                        }
-
-                        return Html::a(
-                            '<span class="glyphicon glyphicon-pencil"></span>',
-                            ['update', 'id' => $model['id'], 'locale' => $model['locale']],
-                            ['data-pjax' => '0']
-                        );
-                    },
-                    'activate'=> function ($url, $model) {
-                        if ($model['is_deleted'] == IsDeletedEnum::DELETED){
-                            return '';
-                        }
-                        if ($model['status'] == StatusEnum::ACTIVE){
-                            return '';
-                        }
-                        return Html::a(
-                            '<span class="glyphicon glyphicon-ok"></span>',
-                            ['status-change', 'id' => $model['id'], 'status' => StatusEnum::ACTIVE],
-                            [
-                                'title' => Yii::t('banner', 'Активировать'),
-                                'data-confirm' => Yii::t('banner', 'Активировать ?'),
-                                'data-method' => 'post',
-                            ]
-                        );
-                    },
-                    'deactivate'=> function ($url, $model) {
-                        if ($model['is_deleted'] == IsDeletedEnum::DELETED){
-                            return '';
-                        }
-                        if ($model['status'] == StatusEnum::INACTIVE){
-                            return '';
-                        }
-                        return Html::a(
-                            '<span class="glyphicon glyphicon-remove"></span>',
-                            ['status-change', 'id' => $model['id'], 'status' => StatusEnum::INACTIVE],
-                            [
-                                'title' => Yii::t('banner', 'Деактивировать'),
-                                'data-confirm' => Yii::t('banner', 'Деактивировать ?'),
-                                'data-method' => 'post',
-                            ]
-                        );
-                    },
-                    'delete'=> function ($url, $model) {
-                        if ($model['is_deleted'] == IsDeletedEnum::DELETED){
-                            return '';
-                        }
-
-                        return Html::a(
-                            '<span class="glyphicon glyphicon-trash"></span>',
-                            ['delete', 'id' => $model['id']],
-                            [
-                                'title' => Yii::t('banner', 'Удалить'),
-                                'data-confirm' => Yii::t('banner', 'Удалить ?'),
-                                'data-method' => 'post',
-                            ]
-                        );
-                    }
-                ]
-            ],
+<?= GridView::widget([
+    'dataProvider' => $dataProvider,
+    'searchVisible' => true,
+    'searchParams' => [
+        'model' => $searchModel
+    ],
+    'columns' => [
+        'id',
+        'alias',
+        [
+            'attribute'=>'status',
+            'filter'=> StatusEnum::arrayList(),
+            'value'=>function($data) {
+                return $data->statusLabel();
+            }
         ],
-    ]); ?>
+        [
+            'attribute'=>'Версии',
+            'value'=>function($data) {
 
-    <?php Pjax::end(); ?>
+                return implode(",", $data->locales());
+            }
+        ],
+        'created_at',
+        [
+            'attribute'=>'is_deleted',
+            'filter'=> IsDeletedEnum::arrayList(),
+            'value'=>function($data) {
+                return $data->isDeletedLabel();
+            }
+        ],
 
-</div>
+        [
+            'class'=>'yii\grid\ActionColumn',
+            'template'=>'{view} {update} {activate} {deactivate} {delete}',
+            'buttons'=>[
+                'view'=> function ($url, $model) {
+                    return Html::a(
+                        '<i class="icon-file-eye2"></i>' . Yii::t('yii2admin', 'Просмотр'),
+                        ['view', 'id' => $model['id'], 'locale' => $model['locale']],
+                        [
+                            'class' => 'dropdown-item',
+                            'aria-label' => Yii::t('yii2admin', 'Просмотр'),
+                            'title' => Yii::t('yii2admin', 'Просмотр'),
+                            'data-pjax' => '0'
+                        ]
+                    );
+                },
+                'update'=> function ($url, $model) {
+                    if ($model['is_deleted'] == IsDeletedEnum::DELETED){
+                        return '';
+                    }
+
+                    return Html::a(
+                        '<i class="icon-pencil6"></i>'. Yii::t('yii2admin', 'Редактировать'),
+                        ['update', 'id' => $model['id'], 'locale' => $model['locale']],
+                        [
+                            'class' => 'dropdown-item',
+                            'aria-label' => Yii::t('yii2admin', 'Редактировать'),
+                            'title' => Yii::t('yii2admin', 'Редактировать'),
+                            'data-pjax' => '0'
+                        ]
+                    );
+                },
+                'activate'=> function ($url, $model) {
+                    if ($model['is_deleted'] == IsDeletedEnum::DELETED){
+                        return '';
+                    }
+
+                    if ($model['status'] == StatusEnum::ACTIVE){
+                        return '';
+                    }
+
+                    return Html::a(
+                        '<i class="icon-checkmark4"></i>'. Yii::t('yii2admin', 'Активировать'),
+                        ['status-change', 'id' => $model['id'], 'status' => StatusEnum::ACTIVE],
+                        [
+                            'class' => 'admin-action dropdown-item',
+                            'data-pjax-id' => 'list-pjax',
+                            'data-pjax-url' => Url::current([], true),
+                            'data-swal' => Yii::t('yii2admin' , 'Активировать'),
+                        ]
+                    );
+                },
+                'deactivate'=> function ($url, $model) {
+                    if ($model['is_deleted'] == IsDeletedEnum::DELETED){
+                        return '';
+                    }
+                    if ($model['status'] == StatusEnum::INACTIVE){
+                        return '';
+                    }
+                    return Html::a(
+                        '<i class="icon-cross2"></i>'. Yii::t('yii2admin', 'Деактивировать'),
+                        ['status-change', 'id' => $model['id'], 'status' => StatusEnum::INACTIVE],
+                        [
+                            'class' => 'admin-action dropdown-item',
+                            'data-pjax-id' => 'list-pjax',
+                            'data-pjax-url' => Url::current([], true),
+                            'data-swal' => Yii::t('yii2admin' , 'Деактивировать'),
+                        ]
+                    );
+                },
+                'delete'=> function ($url, $model) {
+                    if ($model['is_deleted'] == IsDeletedEnum::DELETED){
+                        return '';
+                    }
+
+                    return Html::a(
+                        '<i class="icon-trash"></i>'. Yii::t('yii2admin', 'Удалить'),
+                        ['delete', 'id' => $model['id']],
+                        [
+                            'class' => 'admin-action dropdown-item',
+                            'data-pjax-id' => 'list-pjax',
+                            'data-pjax-url' => Url::current([], true),
+                            'data-swal' => Yii::t('yii2admin' , 'Удалить'),
+                        ]
+                    );
+                }
+            ]
+        ],
+    ],
+]); ?>
+
+<?php Pjax::end(); ?>
