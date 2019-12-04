@@ -25,6 +25,7 @@ use concepture\yii2banner\enum\BannerTypesEnum;
 
     <?php $form = ActiveForm::begin(['enableClientValidation'=>false]) ?>
     <?= $form->errorSummary($model) ?>
+    <?= $form->field($model, 'alias')->textInput(['maxlength' => true]) ?>
     <?= $form->field($model, 'type')->dropDownList(
         BannerTypesEnum::arrayList(),
         [
@@ -46,7 +47,6 @@ use concepture\yii2banner\enum\BannerTypesEnum;
         ]); ?>
     <?php endif;?>
 
-    <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
     <?= $form->field($model, 'url')->textInput(['maxlength' => true]) ?>
     <?= $form->field($model, 'target')->dropDownList(
         TargetAttributeEnum::arrayList(),
@@ -55,7 +55,7 @@ use concepture\yii2banner\enum\BannerTypesEnum;
         ]
     );?>
 
-    <?= $form->field($model, 'seo_name')->textInput(['maxlength' => true]) ?>
+
     <div class="row">
         <div class="col-md-6">
             <?= $form->field($model, 'from_at')->widget(\yii\jui\DatePicker::className(),

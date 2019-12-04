@@ -42,7 +42,8 @@ class BannerUrlLink extends ActiveRecord
             [
                 [
                     'banner_id',
-                    'sort'
+                    'sort',
+                    'type',
                 ],
                 'integer'
             ],
@@ -53,6 +54,13 @@ class BannerUrlLink extends ActiveRecord
                 ],
                 'string',
                 'max'=>1024
+            ],
+            [
+                [
+                    'group'
+                ],
+                'string',
+                'max'=>50
             ],
             [
                 [
@@ -75,13 +83,15 @@ class BannerUrlLink extends ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => Yii::t('static','#'),
-            'banner_id' => Yii::t('static','Баннер'),
-            'sort' => Yii::t('static','Сортировка'),
-            'url' => Yii::t('static','url страницы'),
-            'url_md5_hash' => Yii::t('static','md5 url страницы'),
-            'created_at' => Yii::t('static','Дата создания'),
-            'updated_at' => Yii::t('static','Дата обновления'),
+            'id' => Yii::t('banner','#'),
+            'banner_id' => Yii::t('banner','Баннер'),
+            'type' => Yii::t('banner','Тип'),
+            'group' => Yii::t('banner','Группировка'),
+            'sort' => Yii::t('banner','Сортировка'),
+            'url' => Yii::t('banner','url страницы'),
+            'url_md5_hash' => Yii::t('banner','md5 url страницы'),
+            'created_at' => Yii::t('banner','Дата создания'),
+            'updated_at' => Yii::t('banner','Дата обновления'),
         ];
     }
 }

@@ -34,7 +34,7 @@ class BannerSearch extends Banner
             [
                 [
                     'title',
-                    'seo_name'
+                    'alias'
                 ],
                 'safe'
             ],
@@ -58,7 +58,7 @@ class BannerSearch extends Banner
         $query->andFilterWhere([
             'is_deleted' => $this->is_deleted
         ]);
-        $query->andFilterWhere(['like', "seo_name", $this->seo_name]);
+        $query->andFilterWhere(['like', "alias", $this->alias]);
         static::$search_by_locale_callable = function($q, $localizedAlias){
             $q->andFilterWhere(['like', "{$localizedAlias}.title", $this->title]);
         };

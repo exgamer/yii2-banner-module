@@ -25,7 +25,7 @@ use concepture\yii2banner\models\traits\BannerUrlLinkTrait;
  * @property integer $locale
  * @property string $title
  * @property string $content
- * @property string $seo_name
+ * @property string $alias
  * @property string $image
  * @property string $url
  * @property string $target
@@ -91,7 +91,7 @@ class Banner extends ActiveRecord
             [
                 [
                     'title',
-                    'seo_name',
+                    'alias',
                     'url',
                     'image',
                 ],
@@ -107,16 +107,11 @@ class Banner extends ActiveRecord
             ],
             [
                 [
-                    'seo_name',
+                    'domain_id',
+                    'alias'
                 ],
-                TranslitValidator::className(),
-                'source' => 'title'
-            ],
-            [
-                [
-                    'seo_name',
-                ],
-                'unique'
+                'unique',
+                'targetAttribute' => ['domain_id', 'alias']
             ],
             [
                 [
@@ -149,7 +144,7 @@ class Banner extends ActiveRecord
             'locale' => Yii::t('banner','Язык'),
             'title' => Yii::t('banner','Название'),
             'content' => Yii::t('banner','Контент'),
-            'seo_name' => Yii::t('banner','SEO название'),
+            'alias' => Yii::t('banner','Альяс'),
             'sort' => Yii::t('banner','Сортировка'),
             'image' => Yii::t('banner','Изображение'),
             'from_at' => Yii::t('banner','Дата с'),

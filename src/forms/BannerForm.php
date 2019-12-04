@@ -20,7 +20,7 @@ class BannerForm extends Form
     public $locale = "ru";
     public $title;
     public $content;
-    public $seo_name;
+    public $alias;
     public $image;
     public $from_at;
     public $to_at;
@@ -48,7 +48,7 @@ class BannerForm extends Form
         return [
             [
                 [
-                    'title',
+                    'alias',
                     'locale',
                     'image',
                     'type',

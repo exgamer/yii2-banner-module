@@ -24,13 +24,15 @@ class BannerUrlLinkSearch extends BannerUrlLink
             [
                 [
                     'id',
-                    'banner_id'
+                    'banner_id',
+                    'type',
                 ],
                 'integer'
             ],
             [
                 [
-                    'url'
+                    'url',
+                    'group',
                 ],
                 'safe'
             ],
@@ -45,6 +47,10 @@ class BannerUrlLinkSearch extends BannerUrlLink
         $query->andFilterWhere([
             'banner_id' => $this->banner_id
         ]);
+        $query->andFilterWhere([
+            'type' => $this->type
+        ]);
         $query->andFilterWhere(['like', "url", $this->url]);
+        $query->andFilterWhere(['like', "group", $this->group]);
     }
 }

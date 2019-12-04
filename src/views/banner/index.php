@@ -36,7 +36,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'filterModel' => $searchModel,
         'columns' => [
             'id',
-            'title',
+            'alias',
 //            [
 //                'attribute'=>'locale',
 //                'filter'=>Yii::$app->localeService->getAllList('locale', 'locale')

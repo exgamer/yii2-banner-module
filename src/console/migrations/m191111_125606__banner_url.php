@@ -17,13 +17,17 @@ class m191111_125606__banner_url extends Migration
         $this->addTable([
             'id' => $this->bigPrimaryKey(),
             'banner_id' => $this->bigInteger()->notNull(),
+            'type' => $this->integer()->notNull(),
             'url' => $this->string(255)->notNull(),
             'url_md5_hash' => $this->string(32),
+            'group' => $this->string(50),
             'sort' => $this->integer()->defaultValue(0),
             'created_at' => $this->dateTime()->defaultValue(new \yii\db\Expression("NOW()")),
             'updated_at' => $this->dateTime()->append('ON UPDATE NOW()')
         ]);
+        $this->addIndex(['type']);
         $this->addIndex(['banner_id']);
+        $this->addIndex(['group']);
         $this->addIndex(['url']);
         $this->addUniqueIndex(['banner_id', 'url_md5_hash']);
         $this->execute("ALTER TABLE banner_url_link

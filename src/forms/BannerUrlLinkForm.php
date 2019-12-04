@@ -14,6 +14,8 @@ class BannerUrlLinkForm extends Form
 {
     public $banner_id;
     public $url;
+    public $type;
+    public $group;
     public $url_md5_hash;
     public $sort;
 
@@ -26,7 +28,8 @@ class BannerUrlLinkForm extends Form
             [
                 [
                     'banner_id',
-                    'url'
+                    'url',
+                    'type',
                 ],
                 'required'
             ],

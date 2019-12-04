@@ -39,7 +39,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id',
-            'title',
+            'alias',
             'url',
             'target',
             [
@@ -49,7 +49,6 @@ $this->params['breadcrumbs'][] = $this->title;
                     return implode(",", $model->locales());
                 }
             ],
-            'seo_name',
             [
                 'attribute'=>'type',
                 'value'=>function($data) {

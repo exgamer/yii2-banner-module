@@ -19,7 +19,7 @@ class m191002_151207_banner extends Migration
             'type' => $this->integer()->notNull(),
             'user_id' => $this->bigInteger()->notNull(),
             'domain_id' => $this->bigInteger(),
-            'seo_name' => $this->string(1024),
+            'alias' => $this->string(1024),
             'status' => $this->smallInteger()->defaultValue(0),
             'created_at' => $this->dateTime()->defaultValue(new \yii\db\Expression("NOW()")),
             'updated_at' => $this->dateTime()->append('ON UPDATE NOW()'),
