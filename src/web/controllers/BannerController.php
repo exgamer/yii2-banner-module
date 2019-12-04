@@ -9,7 +9,7 @@ use concepture\yii2logic\actions\web\AutocompleteListAction;
 use concepture\yii2logic\actions\web\UndeleteLocalizedAction;
 
 /**
- * Class StaticBlockController
+ * Class BannerController
  * @package concepture\yii2banner\web\controllers
  * @author Olzhas Kulzhambekov <exgamer@live.ru>
  */
