@@ -76,6 +76,6 @@ class BannerSearch extends Banner
 
     public static function getListSearchAttribute()
     {
-        return 'title';
+        return 'alias';
     }
 }
