@@ -24,6 +24,7 @@ if (isset($originModel))
 
 <?php Pjax::begin(['formSelector' => '#bannerurllinkform-form']); ?>
 <?php $form = ActiveForm::begin(['id' => 'bannerurllinkform-form']); ?>
+<?= $form->errorSummary($model);?>
     <div class="card">
         <div class="card-body text-right">
             <?=  Html::submitButton(
@@ -36,6 +37,15 @@ if (isset($originModel))
         <div class="card-body">
             <div class="row">
                 <div class="col-lg-6 col-md-6 col-sm-12">
+                    <?= $form
+                        ->field($model, 'type')
+                        ->dropDownList(\concepture\yii2banner\enum\BannerUrlLinkTypesEnum::arrayList(), [
+                            'class' => 'form-control form-control-uniform active-form-refresh-control',
+                            'prompt' => ''
+                        ]);
+                    ?>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12">
                     <?= Html::activeHiddenInput($model, 'banner_id') ?>
                     <?= Html::activeLabel($model, 'banner_id')?>
                     <?= \yii\jui\AutoComplete::widget([
@@ -47,7 +57,7 @@ if (isset($originModel))
                             'minLength'=>'2',
                             'autoFill'=>true,
                             'select' => new \yii\web\JsExpression("function( event, ui ) {
-                                    $('#bannerurllinkform-user_id').val(ui.item.id);
+                                    $('#bannerurllinkform-banner_id').val(ui.item.id);
                              }")]
                     ]); ?>
                     <?= Html::error($model, 'banner_id', ['class' => 'text-danger form-text'])?>
