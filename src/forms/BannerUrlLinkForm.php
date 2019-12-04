@@ -28,7 +28,6 @@ class BannerUrlLinkForm extends Form
             [
                 [
                     'banner_id',
-                    'url',
                     'type',
                 ],
                 'required'

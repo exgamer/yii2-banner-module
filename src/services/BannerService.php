@@ -64,7 +64,7 @@ class BannerService extends Service
 
         return $this->getAllByCondition(function(ActiveQuery $query) use($md5) {
             $query->innerJoinWith('urlLinks');
-            $query->andWhere("u.url_md5_hash = :url_md5_hash", [':url_md5_hash' => $md5]);
+            $query->andWhere("u.url_md5_hash = :url_md5_hash OR u.url_md5_hash IS NULL", [':url_md5_hash' => $md5]);
             $query->andWhere("status = :status", [':status' => StatusEnum::ACTIVE]);
             $query->andWhere("is_deleted = :is_deleted", [':is_deleted' => IsDeletedEnum::NOT_DELETED]);
             $query->orderBy("u.sort ASC");
