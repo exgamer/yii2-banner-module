@@ -1,17 +1,11 @@
 <?php
 
-use yii\helpers\Html;
-
-$this->title = Yii::t('banner', 'Добавить');
-$this->params['breadcrumbs'][] = ['label' => Yii::t('banner', 'Баннеры и страницы'), 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
+$this->setTitle(Yii::t('yii2admin', 'Новая запись'));
+$this->pushBreadcrumbs(['label' => $model::label(), 'url' => ['index']]);
+$this->pushBreadcrumbs($this->title);
+$this->viewHelper()->pushPageHeader(['index'], $model::label(),'icon-list');
 ?>
-<div class="post-category-create">
 
-    <h1><?= Html::encode($this->title) ?></h1>
-
-    <?= $this->render('_form', [
-        'model' => $model,
-    ]) ?>
-
-</div>
+<?= $this->render('_form', [
+    'model' => $model,
+]) ?>

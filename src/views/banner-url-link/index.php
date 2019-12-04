@@ -2,47 +2,41 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
-use yii\widgets\Pjax;
+use kamaelkz\yii2admin\v1\widgets\formelements\Pjax;
+use concepture\yii2handbook\converters\LocaleConverter;
+use concepture\yii2logic\enum\StatusEnum;
+use concepture\yii2logic\enum\IsDeletedEnum;
+use yii\helpers\Url;
 
-
-$this->title = Yii::t('banner', 'Баннеры и страницы');
-$this->params['breadcrumbs'][] = $this->title;
+$this->setTitle($searchModel::label());
+$this->pushBreadcrumbs($this->title);
+$this->viewHelper()->pushPageHeader();
 ?>
-<div class="post-category-index">
+<?php Pjax::begin(); ?>
 
-    <h1><?= Html::encode($this->title) ?></h1>
-
-    <p>
-        <?= Html::a(Yii::t('banner', 'Добавить'), ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
-
-    <?php Pjax::begin(); ?>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
-
-    <?= GridView::widget([
-        'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
-        'columns' => [
-            'id',
-            'url',
-            [
-                'attribute'=>'banner_id',
-//                'filter'=> Yii::$app->domainService->catalog(),
-                'value'=>function($data) {
-                    return $data->getBannerTitle();
-                }
-            ],
-            'sort',
-            'created_at',
-            //'updated_at',
-
-            [
-                'class'=>'yii\grid\ActionColumn',
-                'template'=>'{view} {update} {delete}',
-            ],
+<?= GridView::widget([
+    'dataProvider' => $dataProvider,
+    'searchVisible' => true,
+    'searchParams' => [
+        'model' => $searchModel
+    ],
+    'columns' => [
+        'id',
+        'url',
+        [
+            'attribute'=>'banner_id',
+            'value'=>function($data) {
+                return $data->getBannerTitle();
+            }
         ],
-    ]); ?>
+        'sort',
+        'created_at',
 
-    <?php Pjax::end(); ?>
+        [
+            'class'=>'yii\grid\ActionColumn',
+            'template'=>'{view} {update} {delete}',
+        ],
+    ],
+]); ?>
 
-</div>
+<?php Pjax::end(); ?>
