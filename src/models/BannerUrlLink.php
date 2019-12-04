@@ -26,6 +26,25 @@ class BannerUrlLink extends ActiveRecord
     use BannerTrait;
 
     /**
+     * @see \concepture\yii2logic\models\ActiveRecord:label()
+     *
+     * @return string
+     */
+    public static function label()
+    {
+        return Yii::t('banner', 'Баннеры и страницы');
+    }
+
+    /**
+     * @see \concepture\yii2logic\models\ActiveRecord:toString()
+     * @return string
+     */
+    public function toString()
+    {
+        return $this->id;
+    }
+
+    /**
      * {@inheritdoc}
      */
     public static function tableName()
