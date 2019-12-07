@@ -15,7 +15,7 @@ class m191002_151217_banner_localization extends Migration
     public function up()
     {
         $this->addTable([
-            'id' => $this->bigPrimaryKey(),
+//            'id' => $this->bigPrimaryKey(),
             'entity_id' => $this->bigInteger()->notNull(),
             'locale' => $this->bigInteger()->notNull(),
             'image' => $this->string(1024),
@@ -26,8 +26,9 @@ class m191002_151217_banner_localization extends Migration
             'from_at' => $this->date(),
             'to_at' => $this->date(),
         ]);
+        $this->addPK(['entity_id', 'locale'], true);
         $this->addIndex(['entity_id']);
-        $this->addIndex(['entity_id', 'locale'], true);
+//        $this->addIndex(['entity_id', 'locale'], true);
         $this->addIndex(['locale']);
         $this->addForeign('entity_id', 'banner','id');
         $this->addForeign('locale', 'locale','id');
