@@ -86,7 +86,8 @@ $this->viewHelper()->pushPageHeader(['index'], $model::label(),'icon-list');
                     'value'=>function($model) {
 
                         return implode(",", $model->locales());
-                    }
+                    },
+                    'visible' => Yii::$app->localeService->catalogCount() > 1,
                 ],
                 [
                     'attribute'=>'type',
