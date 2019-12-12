@@ -59,9 +59,7 @@ class BannerSearch extends Banner
             'is_deleted' => $this->is_deleted
         ]);
         $query->andFilterWhere(['like', "alias", $this->alias]);
-        static::searchByLocalization( function($q, $localizedAlias){
-            $q->andFilterWhere(['like', "{$localizedAlias}.title", $this->title]);
-        });
+        $query->andFilterWhere(['like', static::localizationAlias() . ".title", $this->title]);
     }
 
     public function extendDataProvider(ActiveDataProvider $dataProvider)
