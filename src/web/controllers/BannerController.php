@@ -7,6 +7,8 @@ use concepture\yii2logic\controllers\web\localized\Controller;
 use concepture\yii2logic\actions\web\localized\StatusChangeAction;
 use concepture\yii2logic\actions\web\localized\AutocompleteListAction;
 use concepture\yii2logic\actions\web\localized\UndeleteAction;
+use kamaelkz\yii2cdnuploader\actions\web\ImageDeleteAction;
+use kamaelkz\yii2cdnuploader\actions\web\ImageUploadAction;
 
 /**
  * Class BannerController
@@ -19,7 +21,7 @@ class BannerController extends Controller
     {
         return [
             [
-                'actions' => ['index', 'view','create', 'update', 'delete', 'undelete', 'status-change', 'list'],
+                'actions' => ['index', 'view','create', 'update', 'delete', 'undelete', 'status-change', 'list', 'image-upload', 'image-delete'],
                 'allow' => true,
                 'roles' => [UserRoleEnum::ADMIN],
             ]
@@ -35,6 +37,8 @@ class BannerController extends Controller
             'status-change' => StatusChangeAction::class,
             'list' => AutocompleteListAction::class,
             'undelete' => UndeleteAction::class,
+            'image-upload' => ImageUploadAction::class,
+            'image-delete' => ImageDeleteAction::class,
         ]);
     }
 }
