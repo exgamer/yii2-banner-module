@@ -62,7 +62,7 @@ use kamaelkz\yii2cdnuploader\widgets\CdnUploader;
                             'form' => $form,
                             'model' => $model,
                             'attribute' => 'image',
-                            'originModel' => $originModel
+                            'originModel' => isset($originModel) ? $originModel : null
                         ]) ?>
                     </div>
                 </div>
@@ -74,7 +74,7 @@ use kamaelkz\yii2cdnuploader\widgets\CdnUploader;
                             'form' => $form,
                             'model' => $model,
                             'attribute' => 'content',
-                            'originModel' => $originModel
+                            'originModel' => isset($originModel) ? $originModel : null
                         ]) ?>
                     </div>
                 </div>
