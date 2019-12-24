@@ -30,9 +30,15 @@ class m191111_125606__banner_url extends Migration
         $this->addIndex(['group']);
         $this->addIndex(['url']);
         $this->addUniqueIndex(['banner_id', 'url_md5_hash']);
-        $this->execute("ALTER TABLE banner_url_link
-            ADD INDEX bul_url_md5_hash_index
+        if ($this->isMysql()) {
+            $this->execute("ALTER TABLE banner_url_link
+            ADD INDEX bu_url_md5_hash_index
             USING HASH (url_md5_hash);");
+        }
+        if ($this->isPostgres()) {
+            $this->execute("CREATE INDEX bu_url_md5_hash_index 
+            ON banner_url_link USING HASH (url_md5_hash);;");
+        }
         $this->addForeign('banner_id', 'banner','id');
     }
 
