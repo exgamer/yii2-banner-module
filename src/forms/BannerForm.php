@@ -17,7 +17,7 @@ class BannerForm extends BaseForm
     public $type = BannerTypesEnum::IMAGE;
     public $user_id;
     public $domain_id;
-    public $locale = "ru";
+    public $locale;
     public $title;
     public $content;
     public $alias;
