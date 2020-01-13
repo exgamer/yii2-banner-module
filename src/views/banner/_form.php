@@ -73,7 +73,7 @@ $saveButton = Html::submitButton(
                             'form' => $form,
                             'model' => $model,
                             'attribute' => 'image',
-                            'originModel' => $originModel
+                            'originModel' => isset($originModel) ? $originModel : null
                         ]) ?>
                     </div>
                 </div>
@@ -85,7 +85,7 @@ $saveButton = Html::submitButton(
                             'form' => $form,
                             'model' => $model,
                             'attribute' => 'content',
-                            'originModel' => $originModel
+                            'originModel' => isset($originModel) ? $originModel : null
                         ]) ?>
                     </div>
                 </div>
