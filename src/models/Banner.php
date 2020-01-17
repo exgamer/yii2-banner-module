@@ -50,14 +50,14 @@ class Banner extends ActiveRecord
     use BannerUrlLinkTrait;
     use ModelTrait;
 
-    public $locale;
-    public $title;
-    public $content;
-    public $image;
-    public $from_at;
-    public $to_at;
-    public $url;
-    public $target;
+//    public $locale;
+//    public $title;
+//    public $content;
+//    public $image;
+//    public $from_at;
+//    public $to_at;
+//    public $url;
+//    public $target;
 
     /**
      * @see \concepture\yii2logic\models\ActiveRecord:label()
