@@ -1,0 +1,12 @@
+image: atlassian/default-image:2
+
+pipelines:
+  default:
+    - step:
+        script:
+          - echo "Push to github!"
+          - git remote set-url origin git@github.com:exgamer/yii2-banner-module.git
+          - echo $GITPUSH > ~/.ssh/id_rsa.tmp
+          - base64 -d -w 0 ~/.ssh/id_rsa.tmp > ~/.ssh/id_rsa
+          - chmod 600 ~/.ssh/id_rsa
+          - git push 
